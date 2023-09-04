@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrate ingrediente</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
+    <img src="{{url_for('static',filename='img/logo2.png')}} ">
+    <img src="{{url_for('static',filename='img/fondologin.jpg')}} ">
+</head>
+  <body>
+    <div class="login-page">
+        <div class="form">
+          <form action="/registrar" method="POST" class="login-form">
+            <img src="{{url_for('static',filename='img/logo2.png')}} "  >
+            <!--<img src="../../Assets/imagene/img/logo2.jpg" height="150px" width="150px" >-->
+            <br><br>
+            <input type="text" name="nombre" placeholder="Nombre ingrediente"/>
+            <input type="text" name="descripcion" placeholder="Descripcion Ingrediente "/>
+            <input type="text" name="tipoSabor" placeholder="Tipo sabor Ingrediente"/>
+            <input type="text" name="categoria" placeholder="Categoria Ingrediente"/>
+            <br>
+            <button>Registrar</button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>

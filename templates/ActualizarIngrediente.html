@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
+    <img src="{{url_for('static',filename='img/logo2.png')}} "  >
+    <img src="{{url_for('static',filename='img/fondologin.jpg')}} "  >
+    <title>Actualizar Ingrediente</title>
+    <!-- Este es un comentario en HTML 
+    <link rel="shortcut icon" href="../../Assets/imagene/img/logo2.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../../Assets/img/fondologin.jpg">
+    <link rel="stylesheet" href="../../Assets/css/login.css">-->
+</head>
+  <body>
+    <div class="login-page">
+        <div class="form">
+          <h1>Actualizar Ingrediente</h1>
+          <form method="POST" action="/actualizar/{{ ingrediente.codigoIngrediente }}"  class="login-form">
+            <img src="{{url_for('static',filename='img/logo2.png')}} "  >
+            <!--<img src="../../Assets/imagene/img/logo2.jpg" height="150px" width="150px" >-->
+            <br><br>
+            <input type="text" name="nombre" placeholder="Nombre ingrediente" value="{{ ingrediente.nombreIngrediente }}"/>
+            <input type="text" name="descripcion" placeholder="Descripcion Ingrediente" value="{{ ingrediente.descripcionIngrediente }}"/>
+            <input type="text" name="tipoSabor" placeholder="Tipo sabor Ingrediente" value="{{ ingrediente.tipoSaborIngrediente }}"/>
+            <input type="text" name="categoria" placeholder="Categoria Ingrediente" value="{{ ingrediente.categoriaIngrediente }}"/>
+            <br>
+            <button type="submit">Actualizar</button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>

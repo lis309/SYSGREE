@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Consultar Ingredientes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilos.css')}}">
+  <!--<link rel="stylesheet" type="text/css" href="../../Assets/css/estilos.css">
+  -->
+  </head>
+<body>
+  <img src="{{url_for('static',filename='img/fondologin.png')}} "  >
+  
+  <div class="container">
+    <img src="{{url_for('static',filename='img/logo2.png')}} "  >
+  </div>
+
+
+  <h1>Consultar los ingredientes</h1>
+  <div class="buscar">
+    <input type="text" placeholder="Buscar" required />
+
+    <div class="btn">
+      <i class="fas fa-search icon"></i>
+      {% for ingredient in ingredients %}
+      <h1>Ingredientes</h1>
+      <div>
+        <p>{{ ingredient.codigoIngrediente }}</p>
+        <p>{{ ingredient.nombreIngrediente }}</p>
+        <p>{{ ingredient.descripcionIngrediente }}</p>
+        <p>{{ ingredient.tipoSaborIngrediente }}</p>
+        <p>{{ ingredient.categoriaIngrediente }}</p>
+        <div>
+          <a href="{{ url_for('ingredients.actualizarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}">Actualizar</a>
+          <a href="{{ url_for('ingredients.eliminarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}">Eliminar</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
