@@ -27,7 +27,6 @@ class Usuario(db.Model):
         self.passwordUsuario = passwordUsuario
         self.idRolUsuarioFK = idRolUsuarioFK
 
-
 class Ingrediente(db.Model):
     # Definir los atributos
     __tablename__ = "ingredientes"

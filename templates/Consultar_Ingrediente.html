@@ -2,41 +2,57 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Consultar Ingredientes</title>
+	<title>Dando estilo a tablas</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilos.css')}}">
-  <!--<link rel="stylesheet" type="text/css" href="../../Assets/css/estilos.css">
-  -->
-  </head>
+	<link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilos.css')}}">
+</head>
 <body>
-  <img src="{{url_for('static',filename='img/fondologin.png')}} "  >
-  
-  <div class="container">
-    <img src="{{url_for('static',filename='img/logo2.png')}} "  >
-  </div>
 
-
-  <h1>Consultar los ingredientes</h1>
+  <h1>Consultar Ingredientes</h1>
   <div class="buscar">
     <input type="text" placeholder="Buscar" required />
 
     <div class="btn">
       <i class="fas fa-search icon"></i>
-      {% for ingredient in ingredients %}
-      <h1>Ingredientes</h1>
-      <div>
-        <p>{{ ingredient.codigoIngrediente }}</p>
-        <p>{{ ingredient.nombreIngrediente }}</p>
-        <p>{{ ingredient.descripcionIngrediente }}</p>
-        <p>{{ ingredient.tipoSaborIngrediente }}</p>
-        <p>{{ ingredient.categoriaIngrediente }}</p>
-        <div>
-          <a href="{{ url_for('ingredients.actualizarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}">Actualizar</a>
-          <a href="{{ url_for('ingredients.eliminarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}">Eliminar</a>
-        </div>
-      </div>
-      {% endfor %}
     </div>
   </div>
+  <br><br><br>
+  <section>
+    <br>
+      <table>
+        <thead>
+          <tr>
+            <th>Código </th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Tipo Sabor</th>
+            <th>Categoria</th>
+            <th></th>
+          </tr>
+        </thead>
+        {% for ingredient in ingredients %}
+        <tbody>
+          <tr>
+            <td>{{ ingredient.codigoIngrediente }}</td>
+            <td>{{ ingredient.nombreIngrediente }}</td>
+            <td>{{ ingredient.descripcionIngrediente }}</td>
+            <td>{{ ingredient.tipoSaborIngrediente }}</td>
+            <td>{{ ingredient.categoriaIngrediente }}</td>
+            <td>
+              <div>
+
+                <a href="{{ url_for('ingredients.actualizarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}"><button class="boton">Actualizar</button></a>
+                <button class="boton">
+                  <a href="{{ url_for('ingredients.eliminarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}">Eliminar</a>
+                </button>
+              </div>
+          </td>  
+            </tr>
+        </tbody>
+      {% endfor %}
+      </table>  
+    </section>
+    <br> 
 </body>
 </html>

@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+body{
+  background-image: url(../img/fondologin.jpg);
+}
+
 .login-page {
   width: 360px;
   padding: 9% ;
@@ -26,6 +30,25 @@
   box-sizing: border-box;
   font-size: 14px;
 }
+
+.boton {
+  background-color: #0074D9; /* Color de fondo azul */
+  border: none;
+  color: #FFFFFF; /* Color del texto blanco */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px; /* Borde redondeado */
+  cursor: pointer;
+}
+
+img{
+  width: 150px;
+  height: 150px;
+}
+
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;

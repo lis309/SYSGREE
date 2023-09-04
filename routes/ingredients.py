@@ -9,6 +9,10 @@ from utils.db import db
 
 ingredients = Blueprint("ingredients", __name__)
 
+@ingredients.route("/")
+def home():
+    return render_template("index.html")
+
 @ingredients.route("/consultar")
 def consultarIngrediente():
     ingredients = Ingrediente.query.all()
