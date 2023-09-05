@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Ingrediente</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
+</head>
+  <body>
+    <div class="login-page">
+        <div class="form">
+          <form action="/actualizarIngrediente/{{ ingrediente.codigoIngrediente }}" method="POST" class="login-form">
+            <img src="{{url_for('static',filename='img/logo2.jpg')}} "  >
+            <!--<img src="../../Assets/imagene/img/logo2.jpg" height="150px" width="150px" >-->
+            <br><br>
+            <label for="">Nombre del ingrediente</label>
+            <input type="text" name="nombre" value="{{ ingrediente.nombreIngrediente }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
+            <label for="">Descripción del plato</label>
+            <input type="text" name="descripcion" value="{{ ingrediente.descripcionIngrediente }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{7,}" required/>
+            <label for="">Tipo sabor del ingrediente</label>
+            <input type="text" name="tipoSabor" value="{{ ingrediente.tipoSaborIngrediente }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
+            <label for="">Categoría del ingrediente</label>
+            <input type="text" name="categoria" value="{{ ingrediente.categoriaIngrediente }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
+            <br>
+            <button>Actualizar</button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>
+
+

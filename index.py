@@ -5,7 +5,7 @@ from app import app
 from utils.db import db
 
 # Importar modelos SQLAlchemy
-from models.ingredients import rolUsuario, Usuario, Ingrediente, Plato, IngredientePlato
+from models.Modelos import rolUsuario, Usuario, Ingrediente, Plato, IngredientePlato
 
 # Registrar la aplicación Flask con SQLAlchemy
 db.init_app(app)

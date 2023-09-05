@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Plato</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
+</head>
+  <body>
+    <div class="login-page">
+        <div class="form">
+          <form id="registrarPlato" action="/registrarPlate" method="POST" class="login-form">
+            <img src="{{url_for('static',filename='img/logo2.jpg')}} "  >
+            <br><br>
+            <label for="">Nombre del plato</label>
+            <input type="text" name="nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
+            <label for="">Descripción del plato</label>
+            <input type="text" name="descripcion" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{10,}" required/>
+            <label for="">Precio del plato</label>
+            <input type="number" name="precio" min="5000" step="1" required/>
+            <br>
+            <button type="submit">Registrar</button>
+          </form>
+        </div>
+      </div>  
+  </body>
+</html>

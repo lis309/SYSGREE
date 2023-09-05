@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Ingrediente</title>
+    <title>Actualizar Plato</title>
     <link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
 </head>
   <body>
     <div class="login-page">
         <div class="form">
-          <form action="/registrar" method="POST" class="login-form">
+          <form action="/actualizarPlato/{{ plate.codigoPlato }}" method="POST" class="login-form">
             <img src="{{url_for('static',filename='img/logo2.jpg')}} "  >
             <!--<img src="../../Assets/imagene/img/logo2.jpg" height="150px" width="150px" >-->
             <br><br>
-            <input type="text" name="nombre" placeholder="Nombre ingrediente" value="{{ ingrediente.nombreIngrediente }}"/>
-            <input type="text" name="descripcion" placeholder="Descripcion Ingrediente" value="{{ ingrediente.descripcionIngrediente }}"/>
-            <input type="text" name="tipoSabor" placeholder="Tipo sabor Ingrediente" value="{{ ingrediente.tipoSaborIngrediente }}"/>
-            <input type="text" name="categoria" placeholder="Categoria Ingrediente" value="{{ ingrediente.categoriaIngrediente }}"/>
+            <label for="">Nombre del plato</label>
+            <input type="text" name="nombre" value="{{ plate.nombrePlato }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}"  required/>
+            <label for="">Descripción del plato</label>
+            <input type="text" name="descripcion" value="{{ plate.descripcionPlato }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{10,}" required/>
+            <label for="">Precio del plato</label>
+            <input type="number" name="precio" value="{{ plate.precioPlato }}" min="5000" step="1" required/>
             <br>
             <button>Actualizar</button>
           </form>

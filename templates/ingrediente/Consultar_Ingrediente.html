@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilos.css')}}">
+    <title>Consultar Ingrediente</title>
+</head>
+<body>
+    <table>
+      <div class="logo-container">
+        <img class="logo" src="{{url_for('static',filename='img/logo2.jpg')}} ">
+      </div>
+        <thead>
+            <tr>
+              <th>Código </th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Tipo Sabor</th>
+              <th>Categoria</th>
+              <th></th>
+              <th></th>
+            </tr>
+        </thead>
+        {% for ingredient in ingredients %}
+        <tbody>
+            <tr>
+                <td>{{ ingredient.codigoIngrediente }}</td>
+                <td>{{ ingredient.nombreIngrediente }}</td>
+                <td>{{ ingredient.descripcionIngrediente }}</td>
+                <td>{{ ingredient.tipoSaborIngrediente }}</td>
+                <td>{{ ingredient.categoriaIngrediente }}</td>
+                <td>
+                  <a href="{{ url_for('ingredients.actualizarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}" class="boton">Actualizar</a>
+                </td>
+                <td>
+                  <a href="{{ url_for('ingredients.eliminarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}" class="boton boton-rojo">Eliminar</a>
+                </td> 
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+
+
+

@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 
 # Importar mi modelo
-from models.ingredients import Ingrediente
+from models.Modelos import Ingrediente
 
 # Conexion a la bd
 from utils.db import db
@@ -13,18 +13,18 @@ ingredients = Blueprint("ingredients", __name__)
 def home():
     return render_template("index.html")
 
-@ingredients.route("/consultar")
+@ingredients.route("/listarIngrediente")
 def consultarIngrediente():
     ingredients = Ingrediente.query.all()
-    return render_template("Consultar_Ingrediente.html", ingredients=ingredients)
+    return render_template("ingrediente/Consultar_Ingrediente.html", ingredients=ingredients)
 
 
-@ingredients.route("/registrar")
+@ingredients.route("/registrarIngrediente")
 def capturarIngrediente():
-    return render_template("RegistrarIngrediente.html")
+    return render_template("ingrediente/RegistrarIngrediente.html")
 
 
-@ingredients.route("/registrar", methods=["POST"])
+@ingredients.route("/registrarIngredient", methods=["POST"])
 def registrarIngrediente():
     nombre = request.form["nombre"]
     descripcion = request.form["descripcion"]
@@ -39,7 +39,7 @@ def registrarIngrediente():
     return redirect(url_for("ingredients.consultarIngrediente"))
 
 
-@ingredients.route("/actualizar/<codigoIngrediente>", methods=["POST", "GET"])
+@ingredients.route("/actualizarIngrediente/<codigoIngrediente>", methods=["POST", "GET"])
 def actualizarIngrediente(codigoIngrediente):
 
     ingrediente = Ingrediente.query.get(codigoIngrediente)
@@ -54,7 +54,7 @@ def actualizarIngrediente(codigoIngrediente):
         
         return redirect(url_for("ingredients.consultarIngrediente"))
 
-    return render_template("ActualizarIngrediente.html", ingrediente=ingrediente)
+    return render_template("ingrediente/ActualizarIngrediente.html", ingrediente=ingrediente)
 
 
 @ingredients.route("/eliminar/<codigoIngrediente>")
