@@ -7,6 +7,9 @@ from routes.ingredients import ingredients
 # Importar blueprint ingredients
 from routes.plates import plates
 
+# Importar blueprint login
+from routes.login import Login
+
 # Importar la clase SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
@@ -23,11 +26,13 @@ app.secret_key = 'h@K45pQwT#m7FgZnD$78vL!xJl5C*+yRb'
 # Crear una instancia de SQLAlchemy
 db = SQLAlchemy()
 
-
 # Traer la función del blueprint
 app.register_blueprint(ingredients)
 
 # Traer la función del blueprint
 app.register_blueprint(plates)
+
+# Traer la función del blueprint
+app.register_blueprint(Login)
 
 

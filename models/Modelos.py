@@ -26,6 +26,7 @@ class Usuario(db.Model):
         self.correoUsuario = correoUsuario
         self.passwordUsuario = passwordUsuario
         self.idRolUsuarioFK = idRolUsuarioFK
+        
 
 class Ingrediente(db.Model):
     # Definir los atributos

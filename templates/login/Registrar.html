@@ -12,19 +12,20 @@
   <body>
     <div class="login-page">
         <div class="form">
-          <form class="login-form" method="post">
+          <form method="POST" class="login-form">
             <img src="../static/img/logo2.jpg" height="150px" width="150px" >
-          </br>
-          </br> 
-            <input type="text" placeholder="Correo electronico"/>
-             <input type="password" placeholder="Ingresar Contraseña "/>
-             <input type="password" placeholder="Confimar contraseña"/>
-             <br>
-            <button><a href="login.html"style="color: antiquewhite;">Registrate</a></button>
-            
+            </br>
+            </br> 
+            <label for="">Correo Electrónico</label>
+            <input type="text" name="correo"/>
+            <label for="">Contraseña</label>
+            <input type="password" name="password"/>
+            <label for="">Confirme contrasña</label>
+            <input type="password" name="password"/>
+            <br>
+            <button><a href="{{ url_for('login.login') }}"style="color: antiquewhite;">Registrate</a></button>
           </form>
         </div>
       </div>
-      
 </body>
 </html>

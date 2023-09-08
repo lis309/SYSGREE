@@ -76,6 +76,7 @@ img{
 a {
   color: #10489c;
   text-decoration: none;
+  font-family: "Roboto", sans-serif;
 }
 .form .register-form {
   display: none;

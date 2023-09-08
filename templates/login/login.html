@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login esturio</title>
-    <link rel="shortcut icon" href="../static/img/logo2.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../static/css/login.css">
+    <title>Iniciar Sesión</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
 </head>
   <body>
     <div class="login-page">
         <div class="form">
-          <form class="login-form" method="post">
-            <img src="../static/img/logo2.jpg" height="150px" width="150px" >
+          <form action="/login" method="POST" class="login-form">
+            <img src= "{{url_for('static',filename='img/logo2.jpg')}}" height="150px" width="150px" >
             <br><br>
-            <input type="text" placeholder="usuario"/>
-            <input type="password" placeholder="contraseña"/>
+            <label for="">Usuario</label>
+            <input name="correo" type="text"/>
+            <label for="">Contraseña</label>
+            <input name="password" type="password"/>
             <br>
-            <button><a href="../menus/menu.html"style="color: antiquewhite;">ingresar</a></button>
-            <p><a href="registrate.html">Registrate</a></p>
-            
+            <button type="submit"><a href=""style="color: antiquewhite;">ingresar</a></button>
+            <p><a href="{{ url_for('login.registrar') }}">Registrate</a></p>
           </form>
         </div>
       </div>
