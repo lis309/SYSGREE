@@ -114,3 +114,18 @@ a {
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+.lista{
+  list-style: none;
+}
+
+.lista li {
+  padding: 20px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  background-color: #578fbd;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+}
+

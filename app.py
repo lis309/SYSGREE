@@ -1,5 +1,6 @@
 # Importar flask
-from flask import Flask
+from flask import Flask, session, flash
+from flask_session import Session
 
 # Importar blueprint ingredients
 from routes.ingredients import ingredients
@@ -22,6 +23,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost:3306/sysgree'
 # Desactivar el seguimiento de notificaciones de SQLAlchemy
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'h@K45pQwT#m7FgZnD$78vL!xJl5C*+yRb'
+
+# Configura la extensión Flask-Session
+app.config['SESSION_TYPE'] = 'filesystem'  # Puedes elegir un método de almacenamiento diferente si lo deseas
+Session(app)
 
 # Crear una instancia de SQLAlchemy
 db = SQLAlchemy()

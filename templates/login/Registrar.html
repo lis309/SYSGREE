@@ -4,26 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrate esturio</title>
-    <link rel="shortcut icon" href="../static/img/logo2.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../static/css/login.css">
-    <link rel="shortcut icon" href="../static/img/fondologin.jpg" >
+    <title>Registrarse</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
 </head>
   <body>
     <div class="login-page">
         <div class="form">
-          <form method="POST" class="login-form">
-            <img src="../static/img/logo2.jpg" height="150px" width="150px" >
+
+          <!-- Agrega aquí el código para mostrar los mensajes flash -->
+          <ul class="lista">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <li class="{{ message }}">{{ message }}</li>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+          </ul>
+
+          <form method="POST"  action="{{ url_for('login.crearCuenta') }}" class="login-form" {{novalidate}} >
+            <img src= "{{url_for('static',filename='img/logo2.jpg')}}" height="150px" width="150px" >
             </br>
             </br> 
             <label for="">Correo Electrónico</label>
-            <input type="text" name="correo"/>
+            <input type="email" name="correo"/>
             <label for="">Contraseña</label>
-            <input type="password" name="password"/>
+            <input type="password" name="password" />
             <label for="">Confirme contrasña</label>
-            <input type="password" name="password"/>
+            <input type="password" name="confirmarPassword"/>
             <br>
-            <button><a href="{{ url_for('login.login') }}"style="color: antiquewhite;">Registrate</a></button>
+            <button type="submit"><a href=""style="color: antiquewhite;">Registrate</a></button>
           </form>
         </div>
       </div>
