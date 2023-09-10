@@ -11,6 +11,9 @@ from routes.plates import plates
 # Importar blueprint login
 from routes.login import Login
 
+# Importar blueprint login
+from routes.menus import menu
+
 # Importar la clase SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
@@ -39,5 +42,8 @@ app.register_blueprint(plates)
 
 # Traer la función del blueprint
 app.register_blueprint(Login)
+
+# Traer la función del blueprint
+app.register_blueprint(menu)
 
 
