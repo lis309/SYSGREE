@@ -1,0 +1,6 @@
+CREATE DATABASE sysgree;
+USE sysgree;
+
+INSERT INTO rolUsuarios (nombreRolUsuario) VALUES
+("Administrador"),
+("Cliente");
