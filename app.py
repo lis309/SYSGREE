@@ -1,5 +1,5 @@
 # Importar flask
-from flask import Flask, session, flash
+from flask import Flask
 from flask_session import Session
 
 # Importar blueprint ingredients
@@ -12,7 +12,10 @@ from routes.plates import plates
 from routes.login import Login
 
 # Importar blueprint login
-from routes.menus import menu
+from routes.menuCliente import menuClient
+
+# Importar blueprint login
+from routes.menuAdministrador import menuAdministrador
 
 # Importar la clase SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
@@ -44,6 +47,9 @@ app.register_blueprint(plates)
 app.register_blueprint(Login)
 
 # Traer la función del blueprint
-app.register_blueprint(menu)
+app.register_blueprint(menuClient)
+
+# Traer la función del blueprint
+app.register_blueprint(menuAdministrador)
 
 

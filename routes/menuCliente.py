@@ -1,48 +1,48 @@
 # Importar flask y otros metodos
 from flask import Blueprint, render_template
 
-menu = Blueprint("menut", __name__)
+menuClient = Blueprint("menu", __name__)
 
-@menu.route("/menu")
-def menu():
-    return render_template("menus/menu.html")
+@menuClient.route("/menu")
+def menuCliente():
+    return render_template("Cliente/menuCliente.html")
 
-@menu.route("/Entradas")
+@menuClient.route("/Entradas")
 def Entradas():
     return render_template("menus/Entradas.html")
 
-@menu.route("/Adicionales")
+@menuClient.route("/Adicionales")
 def Adicionales():
     return render_template("menus/Adicionales.html")
 
-@menu.route("/bebidas")
+@menuClient.route("/bebidas")
 def bebidas():
     return render_template("menus/bebidas.html")
 
-@menu.route("/Infantil")
+@menuClient.route("/Infantil")
 def Infantil():
     return render_template("menus/Infantil.html")
 
-@menu.route("/Jugos")
+@menuClient.route("/Jugos")
 def Jugos():
     return render_template("menus/Jugos.html")
 
-@menu.route("/robalo")
+@menuClient.route("/robalo")
 def robalo():
     return render_template("menus/robalo.html")
 
-@menu.route("/salmon")
+@menuClient.route("/salmon")
 def salmon():
     return render_template("menus/salmon.html")
 
-@menu.route("/Truchas")
+@menuClient.route("/Truchas")
 def Truchas():
     return render_template("menus/Truchas.html")
 
-@menu.route("/Variedade")
-def Variedade():
+@menuClient.route("/Variedades")
+def Variedades():
     return render_template("menus/Variedades.html")
 
-@menu.route("/Variedades2")
-def Variedades2():
+@menuClient.route("/Variedad")
+def Variedad():
     return render_template("menus/Variedades2.html")

@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Ingrediente</title>
-    <link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/index/logo2.jpg')}}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
 </head>
   <body>
     <div class="login-page">
         <div class="form">
           <form action="/actualizarIngrediente/{{ ingrediente.codigoIngrediente }}" method="POST" class="login-form">
-            <img src="{{url_for('static',filename='img/logo2.jpg')}} "  >
+            <img src="{{url_for('static',filename='img/index/logo2.jpg')}} "  >
             <!--<img src="../../Assets/imagene/img/logo2.jpg" height="150px" width="150px" >-->
             <br><br>
             <label for="">Nombre del ingrediente</label>

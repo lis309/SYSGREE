@@ -89,9 +89,9 @@ def login():
             
             # Redirige según el rol del usuario
             if user.idRolUsuarioFK == 1:  # Rol de administrador 
-                return redirect(url_for('plates.consultarPlato'))  # Ruta para administradores
+                return redirect(url_for('menuAdmin.menuAdmin'))  # Ruta para administradores
             elif user.idRolUsuarioFK == 2:  # Rol de cliente 
-                return redirect(url_for('plates.capturarPlato'))  # Ruta para clientes
+                return redirect(url_for('menu.menuCliente'))  # Ruta para clientes
 
         flash('Credenciales incorrectas. Por favor, inténtalo de nuevo.')
         return render_template('Login/login.html')

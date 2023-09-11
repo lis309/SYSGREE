@@ -1,57 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-*{
- margin: 0;
+
+* {
+  margin: auto;
   padding: 0;
   box-sizing: border-box;
-      font-family: 'Open Sans';
+  font-family: 'Open Sans';
 }
-body{
-    background-image: url(img/fondo.jpg);
+
+img{
+  height: 100px;
+  width: 100px;
+  margin-right: 20px;
+}
+
+body {
+  background-image: url(img/fondo.jpg);
   background-size: cover;
 }
-nav{
- max-width: 2000px;
+
+nav {
   margin: auto;
-        background-color: rgba(255, 255, 255, 0);
-     font-size: 10px;
-        margin-top: 2px;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 10px;
+  margin-top: 2px;
 }
-.menu-horizontal{
- list-style: none;
-display: flex;
-justify-content: space-around;
+
+header nav ul li {
+  margin: auto; /* Reduce el margen entre elementos del menú */
 }
-.menu-horizontal > li > a{
+
+ul.menu-horizontal{
+  margin: auto;
+  max-width: 90%;
+}
+
+.menu-horizontal {
+  margin: auto;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu-horizontal>li>a {
+  margin: auto;
   display: block;
-      padding: 20px 20px;
-        color: white;
-      text-decoration: none;
+  padding: 20px 20px;
+  color: white;
+  text-decoration: none;
 }
-.menu-horizontal > li:hover{
+
+.menu-horizontal>li:hover {
   background-color: #5bafdd;
 }
-.menu-vertical{
-   position: absolute;
-   display: none;
-        list-style: none;
+
+.menu-vertical {
+  margin: auto;
+  position: absolute;
+  display: none;
+  list-style: none;
   width: 200px;
-        background-color: rgba(215, 214, 214, 0.5);
-}
-.menu-horizontal li:hover .menu-vertical{
-       display: block;
-}
-.menu-vertical li:hover{
-    background-color: rgb(137, 177, 238);
+  background-color: rgba(215, 214, 214, 0.5);
 }
 
-.menu-vertical li a{
-      display: block;
+.menu-horizontal li:hover .menu-vertical {
+  margin: auto;
+  display: block;
+}
+
+.menu-vertical li:hover {
+  background-color: rgb(137, 177, 238);
+}
+
+.menu-vertical li a {
+  margin: auto;
+  display: block;
   color: white;
-        text-decoration: none;
-     padding: 15px 15px 15px 20px;
-}
-li{
-    font-size: 17px;
+  text-decoration: none;
+  padding: 15px 15px 15px 20px;
 }
 
-
+li {
+  margin: auto;
+  font-size: 17px;
+}

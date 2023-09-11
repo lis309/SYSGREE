@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Ingrediente</title>
-    <link rel="shortcut icon" href="{{url_for('static',filename='img/logo2.jpg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/index/logo2.jpg')}}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
 </head>
   <body>
     <div class="login-page">
         <div class="form">
           <form action="/registrarIngredient" method="POST" class="login-form">
-            <img src="{{url_for('static',filename='img/logo2.jpg')}} "  >
+            <img src="{{url_for('static',filename='img/index/logo2.jpg')}} "  >
             <br><br>
             <label for="">Nombre del ingrediente</label>
             <input type="text" name="nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>

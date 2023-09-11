@@ -4,15 +4,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <link rel="shortcut icon" href="{{url_for('static',filename='img/imge/logo2.jpg')}}" type="image/x-icon">
-            <link rel="stylesheet" href="{{url_for('static',filename='css/menu.css')}}">
-            <link rel="stylesheet" href="{{url_for('static',filename='css/menu2.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/index/logo2.jpg')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/menu.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/menu2.css')}}">
 </head>
+
 <body>
-	<header>
-        <nav>
+    <header>
+        <nav class="menu">
             <ul class="menu-horizontal">
-				<h1>ESTURIÓN</h1>
+                <img src="{{url_for('static',filename='img/index/logo2.jpg')}}" alt="">
                 <li>
                     <a href="/Entradas">Entradas</a>
                 <li>
@@ -20,7 +21,7 @@
                     <ul class="menu-vertical">
                         <li class="scroll-to-section"><a href="/salmon">Salmon</a></li>
                         <li class="scroll-to-section"><a href="/robalo">Robalos</a></li>
-						<li class="scroll-to-section"><a href="/Truchas">Truchas</a></li>
+                        <li class="scroll-to-section"><a href="/Truchas">Truchas</a></li>
                     </ul>
                 </li>
                 <li>
@@ -38,22 +39,22 @@
                 <li><a href="/">Cerrar Sesion</a></li>
             </ul>
         </nav>
-        <section class="textos-header">
-           
-        </section>
-     
+
     </header>
 
-	<section class="zona1"></section>
-	<section>
-        <br>	
-	</section>
-	
+    <section class="zona1">
+    </section>
+    <section>
+        <br>
+    </section>
 
-	<script type="text/javascript">
-		window.addEventListener("scroll", function(){
-			var header = document.querySelector("header");
-			header.classList.toggle("abajo",window.scrollY>0);})
-	</script>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("abajo", window.scrollY > 0);
+        })
+    </script>
 </body>
+
 </html>
