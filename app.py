@@ -52,4 +52,3 @@ app.register_blueprint(menuClient)
 # Traer la función del blueprint
 app.register_blueprint(menuAdministrador)
 
-

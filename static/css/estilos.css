@@ -1,85 +1,112 @@
 body {
-	background-image: url('../img/index/fondologin.jpg');
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100% 100%
+  background-image: url("../img/index/fondologin.jpg");
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Estilos para la sección */
+.pagi {
+	margin-bottom: 20px;
+    text-align: right; /* Alinea el contenido al centro */
+    padding: 20px; /* Espaciado interno */
+}
+
+li {
+	list-style: none;
+}
+
+/* Estilos para el botón */
+.scroll-to-section a {
+    display: inline-block; /* Hace que el enlace sea un bloque en línea */
+    background-color: #4b5785; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interior */
+    text-decoration: none; /* Quita la subrayado del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+/* Estilos para el botón al pasar el mouse sobre él */
+.scroll-to-section a:hover {
+    background-color: #3e4b7c; /* Cambia el color de fondo al pasar el mouse */
 }
 
 .logo-container {
-	display: flex;
-	justify-content: center;
-	/* Centra horizontalmente */
-	align-items: center;
-	/* Centra verticalmente */
-	height: 25vh;
-	/* Establece la altura del contenedor al 100% del alto de la ventana */
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  height: 25vh;
+  /* Establece la altura del contenedor al 100% del alto de la ventana */
 }
 
 .logo {
-	height: 150px;
-	width: 150px;
+  height: 200px;
+  width: 200px;
 }
 
 /* Estilos básicos para hacer que la tabla sea receptiva */
 table {
-	width: 80%;
-	border-collapse: collapse;
-	margin: auto;
-	white-space: nowrap;
-	/* Evita el desbordamiento de texto */
-	overflow-x: auto;
-	/* Agrega una barra de desplazamiento horizontal cuando sea necesario */
+  width: 80%;
+  border-collapse: collapse;
+  margin: auto;
+  white-space: nowrap;
+  /* Evita el desbordamiento de texto */
+  overflow-x: auto;
+  /* Agrega una barra de desplazamiento horizontal cuando sea necesario */
 }
 
 tr {
-	background-color: #fff;
+  background-color: #fff;
 }
 
 tbody tr:hover {
-	background-color: #a2b4d6;
-	/* Cambia el color de fondo cuando pasa el cursor */
+  background-color: #a2b4d6;
+  /* Cambia el color de fondo cuando pasa el cursor */
 }
 
 th,
 td {
-	padding: 12px;
-	text-align: left;
-	border-bottom: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 th {
-	color: #fff;
-	background-color: #4b5785;
+  color: #fff;
+  background-color: #4b5785;
 }
 
 /* Estilos para los botones */
 .btn-container {
-	text-align: center;
+  text-align: center;
 }
 
 .btn-update,
 .btn-delete,
 .boton,
 .boton-rojo {
-	padding: 5px 10px;
-	background-color: #007bff;
-	color: #ffffff;
-	border: none;
-	cursor: pointer;
-	margin-right: 5px;
-	font-family: Arial, sans-serif;
-	/* Cambia la fuente del texto en los botones */
-	text-decoration: none;
-	/* Elimina subrayado en los enlaces */
-	display: inline-block;
-	/* Hacer que los enlaces se muestren en línea */
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  font-family: Arial, sans-serif;
+  /* Cambia la fuente del texto en los botones */
+  text-decoration: none;
+  /* Elimina subrayado en los enlaces */
+  display: inline-block;
+  /* Hacer que los enlaces se muestren en línea */
 }
 
 .btn-delete,
 .boton-rojo {
-	background-color: #dc3545;
+  background-color: #dc3545;
 }

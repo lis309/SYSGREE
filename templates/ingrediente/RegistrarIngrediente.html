@@ -9,6 +9,11 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
 </head>
   <body>
+    <div class="pagi">
+    <ul>
+        <li class="scroll-to-section"><a href="/menuAdmin" class="activate">volver</a></li>
+    </ul>
+  </div>
     <div class="login-page">
         <div class="form">
           <form action="/registrarIngredient" method="POST" class="login-form">
@@ -16,12 +21,26 @@
             <br><br>
             <label for="">Nombre del ingrediente</label>
             <input type="text" name="nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
-            <label for="">Descripción del plato</label>
+            <label for="">Descripción del ingrediente</label>
             <input type="text" name="descripcion" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{7,}" required/>
             <label for="">Tipo sabor del ingrediente</label>
-            <input type="text" name="tipoSabor" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
+            <select class="input-contenedor" name="tipoSabor" required>
+              <option value=""></option>
+              <option value="Dulce">Dulce</option>
+              <option value="Salado">Salado</option>
+              <option value="Amargo">Amargo</option>
+              <option value="Ácido">Ácido</option>
+              <option value="Umami">Umami</option>
+            </select>
             <label for="">Categoría del ingrediente</label>
-            <input type="text" name="categoria" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
+            <select class="input-contenedor" name="categoria" required>
+              <option value=""></option>
+              <option value="Granos">Granos</option>
+              <option value="Verduras">Verduras</option>
+              <option value="Frutas">Frutas</option>
+              <option value="Lácteos">Lácteos</option>
+              <option value="Proteínas">Proteínas</option>
+            </select>
             <br>
             <button>Registrar</button>
           </form>

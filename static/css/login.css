@@ -9,6 +9,34 @@ body{
   padding: 9% ;
   margin: auto;
 }
+
+/* Estilos para la sección */
+.pagi {
+	margin-bottom: 20px;
+    text-align: right; /* Alinea el contenido al centro */
+    padding: 20px; /* Espaciado interno */
+}
+
+li {
+	list-style: none;
+}
+
+/* Estilos para el botón */
+.scroll-to-section a {
+    display: inline-block; /* Hace que el enlace sea un bloque en línea */
+    background-color: #4b5785; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interior */
+    text-decoration: none; /* Quita la subrayado del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+/* Estilos para el botón al pasar el mouse sobre él */
+.scroll-to-section a:hover {
+    background-color: #3e4b7c; /* Cambia el color de fondo al pasar el mouse */
+}
+
 .form {
   position: relative;
   z-index: 1;
@@ -22,7 +50,18 @@ body{
 .form label{
   font-family: "Roboto", sans-serif;
 }
-.form input {
+.form input{
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form select{
   outline: 0;
   background: #f2f2f2;
   width: 100%;
