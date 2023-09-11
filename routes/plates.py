@@ -7,6 +7,9 @@ from models.Modelos import Plato
 # Conexion a la bd
 from utils.db import db
 
+#Importar el decorador
+from .validateRol import usuarioAdminRequired
+
 plates = Blueprint("plates", __name__)
 
 @plates.route("/")
@@ -14,17 +17,20 @@ def home():
     return render_template("index.html")
 
 @plates.route("/listarPlato")
+@usuarioAdminRequired
 def consultarPlato():
     plates = Plato.query.all()
     return render_template("plato/Consultar_Plato.html", plates=plates)
 
 
 @plates.route("/registrarPlato")
+@usuarioAdminRequired
 def capturarPlato():
     return render_template("plato/RegistrarPlato.html")
 
 
 @plates.route("/registrarPlate", methods=["POST"])
+@usuarioAdminRequired
 def registrarPlato():
     nombre = request.form["nombre"]
     descripcion = request.form["descripcion"]
@@ -43,6 +49,7 @@ def registrarPlato():
 
 
 @plates.route("/actualizarPlato/<codigoPlato>", methods=["POST", "GET"])
+@usuarioAdminRequired
 def actualizarPlato(codigoPlato):
 
     plate = Plato.query.get(codigoPlato)
@@ -60,6 +67,7 @@ def actualizarPlato(codigoPlato):
 
 
 @plates.route("/eliminarPlato/<codigoPlato>")
+@usuarioAdminRequired
 def eliminarPlato(codigoPlato):
     plate = Plato.query.get(codigoPlato)
 
