@@ -11,18 +11,31 @@
   <body>
     <div class="login-page">
         <div class="form">
+          <img  src="{{url_for('static',filename='img/index/logo2.jpg')}} "  >
           <form action="/actualizarIngrediente/{{ ingrediente.codigoIngrediente }}" method="POST" class="login-form">
-            <img src="{{url_for('static',filename='img/index/logo2.jpg')}} "  >
-            <!--<img src="../../Assets/imagene/img/logo2.jpg" height="150px" width="150px" >-->
             <br><br>
             <label for="">Nombre del ingrediente</label>
             <input type="text" name="nombre" value="{{ ingrediente.nombreIngrediente }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
             <label for="">Descripción del plato</label>
             <input type="text" name="descripcion" value="{{ ingrediente.descripcionIngrediente }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{7,}" required/>
             <label for="">Tipo sabor del ingrediente</label>
-            <input type="text" name="tipoSabor" value="{{ ingrediente.tipoSaborIngrediente }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
+            <select class="input-contenedor" name="tipoSabor" required>
+              <option value="{{ ingrediente.tipoSaborIngrediente }}">{{ ingrediente.tipoSaborIngrediente }}</option>
+              <option value="Dulce">Dulce</option>
+              <option value="Salado">Salado</option>
+              <option value="Amargo">Amargo</option>
+              <option value="Ácido">Ácido</option>
+              <option value="Umami">Umami</option>
+            </select>
             <label for="">Categoría del ingrediente</label>
-            <input type="text" name="categoria" value="{{ ingrediente.categoriaIngrediente }}" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{5,}" required/>
+            <select class="input-contenedor" name="categoria" required>
+              <option value="{{ ingrediente.categoriaIngrediente }}">{{ ingrediente.categoriaIngrediente }}</option>
+              <option value="Granos">Granos</option>
+              <option value="Verduras">Verduras</option>
+              <option value="Frutas">Frutas</option>
+              <option value="Lácteos">Lácteos</option>
+              <option value="Proteínas">Proteínas</option>
+            </select>
             <br>
             <button>Actualizar</button>
           </form>

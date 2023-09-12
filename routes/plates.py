@@ -44,6 +44,8 @@ def registrarPlato():
 
     db.session.add(nuevoPlato)
     db.session.commit()
+    
+    flash("El ingrediente se registró correctamente", "success")
 
     return redirect(url_for("plates.consultarPlato"))
 
@@ -61,6 +63,8 @@ def actualizarPlato(codigoPlato):
 
         db.session.commit()
         
+        flash("El ingrediente se actualizó correctamente", "success")
+        
         return redirect(url_for("plates.consultarPlato"))
 
     return render_template("plato/ActualizarPlato.html", plate=plate)
@@ -73,5 +77,7 @@ def eliminarPlato(codigoPlato):
 
     db.session.delete(plate)
     db.session.commit()
+
+    flash("El ingrediente se eliminó correctamente", "success")
 
     return redirect(url_for("plates.consultarPlato"))

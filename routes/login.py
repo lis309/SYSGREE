@@ -27,43 +27,43 @@ def registrar():
 def crearCuenta():
     if request.method == 'POST':
         # Obtener los datos del formulario de registro
-        correo = request.form['correo']
+        email = request.form['correo']
         password = request.form['password']
         confirmarPassword = request.form['confirmarPassword']
 
-        if not correo:
-            flash('El correo esta vació')
+        if not email:
+            flash('El correo esta vació', 'info')
             return redirect(url_for('login.registrar'))
         else:
             # Verificar si el correo ya está en uso
-            correoExistente = Usuario.query.filter_by(correoUsuario=correo).first()
+            correoExistente = Usuario.query.filter_by(correoUsuario=email).first()
             if correoExistente:
-                flash('El correo ya está en uso. Por favor, elige otro.')
+                flash('El correo ya está en uso. Por favor, elige otro.', 'info')
                 return redirect(url_for('login.registrar'))
 
         if not password or not confirmarPassword:
-            flash('Ningún campo de contraseña debe estar vació')
+            flash('Ningún campo de contraseña debe estar vació', 'warning')
             return redirect(url_for('login.registrar')) 
         else:
             # Validar que la contraseña y la confirmación coincidan
             if password != confirmarPassword:
-                flash('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.')
+                flash('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.', 'warning')
                 return redirect(url_for('login.registrar'))
             else:
                 # Hash de la contraseña antes de guardarla en la base de datos
                 hashed_password = generate_password_hash(password, method='sha256')
 
                 # Crear un nuevo usuario y guardar el hash de la contraseña en la base de datos
-                nuevo_usuario = Usuario(correoUsuario=correo, passwordUsuario=hashed_password, idRolUsuarioFK=2)
+                nuevo_usuario = Usuario(correoUsuario=email, passwordUsuario=hashed_password, idRolUsuarioFK=2)
                 db.session.add(nuevo_usuario)
                 db.session.commit()
 
         # Redirigir al usuario a la página de inicio de sesión u otra página
-        flash('¡Registro exitoso! Por favor, inicia sesión.')
+        flash('¡Registro exitoso! Por favor, inicia sesión.', 'success')
         return redirect(url_for('login.iniciarSesion'))
     
     # Si la solicitud no es POST, simplemente renderiza el formulario de registro
-    flash('Los campos estan vacíos')
+    flash('Los campos estan vacíos', 'info')
     return redirect(url_for('login.registrar'))
 
 @Login.route('/iniciarSesion')
@@ -74,14 +74,18 @@ def iniciarSesion():
 @Login.route('/login', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
-        correo = request.form.get('correo')
+        email = request.form.get('correo')
         password = request.form.get('password')
 
-        if not correo or not password:
-            flash('Por favor, completa todos los campos.', 'error')
+        if not email:
+            flash('Por favor, completa el correo.', 'warning')
             return redirect(url_for('login.iniciarSesion'))
-
-        user = Usuario.query.filter_by(correoUsuario=correo).first()
+        
+        elif not password:
+            flash('Por favor, completa la contraseña.', 'warning')
+            return redirect(url_for('login.iniciarSesion'))
+        
+        user = Usuario.query.filter_by(correoUsuario=email).first()
 
         if user and check_password_hash(user.passwordUsuario, password):
             # Autenticación exitosa, guarda el rol en la sesión
@@ -93,7 +97,7 @@ def login():
             elif user.idRolUsuarioFK == 2:  # Rol de cliente 
                 return redirect(url_for('menu.menuCliente'))  # Ruta para clientes
 
-        flash('Credenciales incorrectas. Por favor, inténtalo de nuevo.')
+        flash('Credenciales incorrectas. Por favor, inténtalo de nuevo.', 'warning')
         return render_template('Login/login.html')
 
     return render_template('Login/login.html')

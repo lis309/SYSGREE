@@ -1,5 +1,5 @@
 # Importar flask y otros metodos
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 
 # Importar mi modelo
 from models.Modelos import Ingrediente
@@ -43,6 +43,8 @@ def registrarIngrediente():
     db.session.add(nuevoIngrediente)
     db.session.commit()
 
+    flash("El ingrediente se registró correctamente", "success")
+
     return redirect(url_for("ingredients.consultarIngrediente"))
 
 
@@ -60,6 +62,8 @@ def actualizarIngrediente(codigoIngrediente):
 
         db.session.commit()
         
+        flash("El ingrediente se actualizó correctamente", "success")
+                
         return redirect(url_for("ingredients.consultarIngrediente"))
 
     return render_template("ingrediente/ActualizarIngrediente.html", ingrediente=ingrediente)
@@ -72,5 +76,7 @@ def eliminarIngrediente(codigoIngrediente):
 
     db.session.delete(ingredient)
     db.session.commit()
+    
+    flash("El ingrediente se eliminó correctamente", "success")
 
     return redirect(url_for("ingredients.consultarIngrediente"))

@@ -12,18 +12,17 @@
     <div class="login-page">
         <div class="form">
 
-          <!-- Agrega aquí el código para mostrar los mensajes flash -->
-          <ul class="lista">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <li class="{{ message }}">{{ message }}</li>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-          </ul>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="alert alert-{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
 
-          <form action="{{ url_for('login.login') }}" method="POST" class="login-form">
+          <form action="{{ url_for('login.login') }}" method="POST" class="login-form" {{novalidate}}>
             <img src= "{{url_for('static',filename='img/index/logo2.jpg')}}" height="150px" width="150px" >
             <br><br>
             <label for="">Usuario</label>

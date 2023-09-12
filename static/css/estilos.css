@@ -49,6 +49,8 @@ li {
 .logo {
   height: 200px;
   width: 200px;
+  margin-bottom: 60px;
+  margin-top: 20px;
 }
 
 /* Estilos básicos para hacer que la tabla sea receptiva */
@@ -109,4 +111,41 @@ th {
 .btn-delete,
 .boton-rojo {
   background-color: #dc3545;
+}
+
+/* Estilo general para los mensajes flash */
+.alert {
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 40px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+/* Estilo para los mensajes de éxito */
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+/* Estilo para los mensajes de error */
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+/* Estilo para los mensajes de información */
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+/* Estilo para los mensajes de advertencia */
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
 }

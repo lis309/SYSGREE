@@ -88,6 +88,7 @@ li {
 img{
   width: 150px;
   height: 150px;
+
 }
 
 .form button {
@@ -158,13 +159,40 @@ a {
   list-style: none;
 }
 
-.lista li {
-  padding: 20px;
-  margin-right: 30px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  background-color: #578fbd;
-  color: #ffffff;
-  font-family: "Roboto", sans-serif;
+/* Estilo general para los mensajes flash */
+.alert {
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 40px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+/* Estilo para los mensajes de éxito */
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+/* Estilo para los mensajes de error */
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+/* Estilo para los mensajes de información */
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+/* Estilo para los mensajes de advertencia */
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
 }
 
