@@ -54,7 +54,7 @@ def crearCuenta():
                 hashed_password = generate_password_hash(password, method='sha256')
 
                 # Crear un nuevo usuario y guardar el hash de la contraseña en la base de datos
-                nuevo_usuario = Usuario(correoUsuario=email, passwordUsuario=hashed_password, idRolUsuarioFK=2)
+                nuevo_usuario = Usuario(correoUsuario=email, passwordUsuario=hashed_password, idRolUsuarioFK=1)
                 db.session.add(nuevo_usuario)
                 db.session.commit()
 

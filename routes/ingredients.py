@@ -12,11 +12,6 @@ from .validateRol import usuarioAdminRequired
 
 ingredients = Blueprint("ingredients", __name__)
 
-@ingredients.route("/")
-@usuarioAdminRequired
-def home():
-    return render_template("index.html")
-
 @ingredients.route("/listarIngrediente")
 @usuarioAdminRequired
 def consultarIngrediente():

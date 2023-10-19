@@ -12,10 +12,6 @@ from .validateRol import usuarioAdminRequired
 
 plates = Blueprint("plates", __name__)
 
-@plates.route("/")
-def home():
-    return render_template("index.html")
-
 @plates.route("/listarPlato")
 @usuarioAdminRequired
 def consultarPlato():
