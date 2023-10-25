@@ -36,7 +36,7 @@
                 </li>
                 <li><a href="/Adicionales">Adicionales</a></li>
                 <li><a href="/Infantil">Menú infantil</a></li>
-                <li><a href="/">Cerrar Sesion</a></li>
+                <li><a href="{{(url_for('logout.verificar'))}}">Cerrar Sesion</a></li>
             </ul>
         </nav>
 
@@ -54,6 +54,13 @@
             var header = document.querySelector("header");
             header.classList.toggle("abajo", window.scrollY > 0);
         })
+    </script>
+    <script>
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
     </script>
 </body>
 

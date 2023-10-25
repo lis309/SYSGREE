@@ -9,11 +9,13 @@ from utils.db import db
 
 #Importar el decorador
 from .validateRol import usuarioAdminRequired
+from .logout import cerrarSesion
 
 ingredients = Blueprint("ingredients", __name__)
 
 @ingredients.route("/listarIngrediente")
 @usuarioAdminRequired
+@cerrarSesion
 def consultarIngrediente():
     ingredients = Ingrediente.query.all()
     return render_template("ingrediente/Consultar_Ingrediente.html", ingredients=ingredients)
@@ -21,12 +23,14 @@ def consultarIngrediente():
 
 @ingredients.route("/registrarIngrediente")
 @usuarioAdminRequired
+@cerrarSesion
 def capturarIngrediente():
     return render_template("ingrediente/RegistrarIngrediente.html")
 
 
 @ingredients.route("/registrarIngredient", methods=["POST"])
 @usuarioAdminRequired
+@cerrarSesion
 def registrarIngrediente():
     nombre = request.form["nombre"]
     descripcion = request.form["descripcion"]
@@ -45,6 +49,7 @@ def registrarIngrediente():
 
 @ingredients.route("/actualizarIngrediente/<codigoIngrediente>", methods=["POST", "GET"])
 @usuarioAdminRequired
+@cerrarSesion
 def actualizarIngrediente(codigoIngrediente):
 
     ingrediente = Ingrediente.query.get(codigoIngrediente)
@@ -66,6 +71,7 @@ def actualizarIngrediente(codigoIngrediente):
 
 @ingredients.route("/eliminar/<codigoIngrediente>")
 @usuarioAdminRequired
+@cerrarSesion
 def eliminarIngrediente(codigoIngrediente):
     ingredient = Ingrediente.query.get(codigoIngrediente)
 

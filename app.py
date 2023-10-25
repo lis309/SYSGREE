@@ -17,6 +17,9 @@ from routes.menuCliente import menuClient
 # Importar blueprint login
 from routes.menuAdministrador import menuAdministrador
 
+#Importar blueprint de cerrar sesion
+from routes.logout import logout
+
 # Importar la clase SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
@@ -51,4 +54,7 @@ app.register_blueprint(menuClient)
 
 # Traer la función del blueprint
 app.register_blueprint(menuAdministrador)
+
+# Traer la función del blueprint
+app.register_blueprint(logout)
 
