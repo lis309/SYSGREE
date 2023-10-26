@@ -1,4 +1,4 @@
-document.querySelectorAll(".mostrar-ventana").forEach(function(btn) {
+document.querySelectorAll(".btn.btn-primary.mostrar-ventana").forEach(function(btn) {
     btn.addEventListener("click", function() {
         var platoId = this.getAttribute("data-plato-id");
         mostrarVentana(platoId);
@@ -6,6 +6,7 @@ document.querySelectorAll(".mostrar-ventana").forEach(function(btn) {
 });
 
 function mostrarVentana(platoId) {
+    console.log("Función mostrarVentana llamada con platoId: " + platoId);
     // Realizar una solicitud AJAX para obtener los ingredientes del plato
     fetch(`/obtener_ingredientes?id=${platoId}`)
         .then(response => response.json())
