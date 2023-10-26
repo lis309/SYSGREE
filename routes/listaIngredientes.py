@@ -1,21 +1,32 @@
-"""
-from flask_sqlalchemy import SQLAlchemy
-from models import IngredientePlato, Ingrediente, Plato
+from flask import jsonify, Blueprint, request
+#Importar modelos
+from models import IngredientePlato, Ingrediente
+# Conexion a la bd
+from utils.db import db
+#Importar el decorador
+from .validateRol import usuarioClientRequired
+from .logout import cerrarSesion
 
-# ...
+listaIngredientes = Blueprint("listaIngredientes", __name__)
 
-# Realizar INNER JOIN entre Ingrediente, Plato e IngredientePlato
-result = db.session.query(Ingrediente.nombre, Plato.nombre).join(
-    IngredientePlato, IngredientePlato.codigoIngredienteFK == Ingrediente.codigoIngrediente
-).join(Plato, IngredientePlato.codigoPlatoFK == Plato.codigoPlato).all()
+# Definir una ruta para obtener los nombres de los ingredientes en formato JSON
+@listaIngredientes.route('/obtener_ingredientes', methods=['GET'])
+@usuarioClientRequired
+@cerrarSesion
+def obtener_ingredientes():
+    # Obtén el ID del plato de la solicitud
+    plato_id = request.args.get("id")
 
-# Procesar los resultados y devolver los nombres de los ingredientes en formato JSON
-ingredientes = [ingrediente for ingrediente, plato in result]
+    # Realiza una consulta para obtener los ingredientes del plato específico
+    ingredientes = db.session.query(Ingrediente.nombre).join(
+        IngredientePlato, IngredientePlato.codigoIngredienteFK == Ingrediente.codigoIngrediente
+    ).filter(IngredientePlato.codigoPlatoFK == plato_id).all()
 
-# Devolver los nombres de los ingredientes en formato JSON
-return jsonify(ingredientes)
+    # Procesa los resultados y devuelve los nombres de los ingredientes en formato JSON
+    ingredientes = [ingrediente for (ingrediente,) in ingredientes]
+    
+    return jsonify(ingredientes)
 
-"""
 
 """
 <!DOCTYPE html>

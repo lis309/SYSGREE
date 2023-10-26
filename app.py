@@ -5,20 +5,23 @@ from flask_session import Session
 # Importar blueprint ingredients
 from routes.ingredients import ingredients
 
-# Importar blueprint ingredients
+# Importar blueprint plates
 from routes.plates import plates
 
 # Importar blueprint login
 from routes.login import Login
 
-# Importar blueprint login
+# Importar blueprint menuCliente
 from routes.menuCliente import menuClient
 
-# Importar blueprint login
+# Importar blueprint menuAdministrador
 from routes.menuAdministrador import menuAdministrador
 
 #Importar blueprint de cerrar sesion
 from routes.logout import logout
+
+#Importar blueprint de listaIngredientes
+from routes.listaIngredientes import listaIngredientes
 
 # Importar la clase SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
@@ -57,4 +60,7 @@ app.register_blueprint(menuAdministrador)
 
 # Traer la función del blueprint
 app.register_blueprint(logout)
+
+# Traer la función del blueprint
+app.register_blueprint(listaIngredientes)
 
