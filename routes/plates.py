@@ -1,5 +1,5 @@
 # Importar flask y otros metodos
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 
 # Importar mi modelo
 from models.Modelos import Plato
@@ -83,3 +83,12 @@ def eliminarPlato(codigoPlato):
     flash("El ingrediente se eliminó correctamente", "success")
 
     return redirect(url_for("plates.consultarPlato"))
+
+@plates.route("/buscarPlato")
+@usuarioAdminRequired
+@cerrarSesion
+def buscar_platos():
+    search_term = request.args.get("nombre").lower()
+    resultados = Plato.query.filter(Plato.nombrePlato.ilike(f"%{search_term}%")).all()
+    resultados = [{"id": plato.id, "nombrePlato": plato.nombrePlato} for plato in resultados]
+    return jsonify(resultados)
