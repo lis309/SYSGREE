@@ -1,5 +1,5 @@
-__pycache__/
+__pycache__/*
 venv/
-models/__pycache__/
-routes/__pycache__/
-utils/__pycache__/
+models/__pycache__/*
+routes/__pycache__/*
+utils/__pycache__/*
