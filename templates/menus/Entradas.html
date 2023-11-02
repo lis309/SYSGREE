@@ -42,8 +42,8 @@
                     <h5 class="card-title">Ceviche de Camarón</h5>
                     <p class="card-text"> $ 28.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="2">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="2">Pedir</button>
             </div>
         </div>
 
@@ -266,6 +266,9 @@
                 <span class="cerrar" id="cerrarVentana" onclick="cerrarVentana()">&times;</span>
                 <h3 class="tituloVentana">Ingredientes</h3>
                 <ul id="listaIngredientes"></ul>
+                <input class="quantity" id="id_form-0-quantity" min="0" name="form-0-quantity" value="1" type="number">
+                <button class="btn btn-primary">Metodo de pago </button>
+                <button class="btn btn-primary">pedir </button>
             </div>
         </div>
 
@@ -280,6 +283,8 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
         </script>
+        
 </body>
 
 </html>
+

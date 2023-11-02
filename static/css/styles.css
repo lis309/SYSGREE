@@ -429,13 +429,15 @@
     /* Footer */
   
     .contenedor-footer{
-        flex-direction: column;
+        
         border: none;
+        float: left;
     }
   
     .content-foo{
         margin-bottom: 20px;
-        text-align: center;
+        text-align: left;
+        float: left;
     }
   
     .content-foo h4{
@@ -451,6 +453,7 @@
     .titulo-final{
         font-size: 20px;
     }
+    .mapa{
+      text-align: left;
+    }
   }
-  
-  
