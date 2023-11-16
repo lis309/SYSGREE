@@ -11,6 +11,7 @@
 
     <link rel="shortcut icon" href="{{url_for('static',filename='img/index/logo2.jpg')}}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/ventana.css')}}">
 </head>
 
 <body>
@@ -29,8 +30,8 @@
                     <h5 class="card-title">Langostinos al Gratín</h5>
                     <p class="card-text"> $ 59.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="60">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="60">Pedir</button>
             </div>
         </div>
 
@@ -41,8 +42,8 @@
                     <h5 class="card-title">Langostinos Hawaianos</h5>
                     <p class="card-text">$ 59.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="61">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="61">Pedir</button>
             </div>
         </div>
 
@@ -53,8 +54,8 @@
                     <h5 class="card-title">Linguine Marinera</h5>
                     <p class="card-text">$ 47.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="62">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="62">Pedir</button>
             </div>
         </div>
 
@@ -65,8 +66,8 @@
                     <h5 class="card-title">Paella de la Casa</h5>
                     <p class="card-text">$ 52.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="63">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="63">Pedir</button>
             </div>
         </div>
 
@@ -78,8 +79,8 @@
                     <h5 class="card-title">Parrillada de Mariscos </h5>
                     <p class="card-text">$ 52.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="64">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="64">Pedir</button>
             </div>
         </div>
 
@@ -90,8 +91,8 @@
                     <h5 class="card-title">Pollo con Champiñones</h5>
                     <p class="card-text">$ 38.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="65">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="65">Pedir</button>
             </div>
         </div>
 
@@ -103,8 +104,8 @@
                     <h5 class="card-title">Pollo Gratinado</h5>
                     <p class="card-text">$ 40.000 </p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="66">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="66">Pedir</button>
             </div>
         </div>
 
@@ -115,12 +116,37 @@
                     <h5 class="card-title">Pollo Grillet</h5>
                     <p class="card-text">$ 35.000 </p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="67">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="67">Pedir</button>
             </div>
         </div>
 
-        <div style="text-align: center;"></div>
+    </div>
+
+    <div class="ventanaEmergente" id="ventanaIngredientes">
+        <div class="contenido">
+            <span class="cerrar" id="cerrarVentanaIngredientes" onclick="cerrarVentana('ventanaIngredientes')">&times;</span>
+            <h3 class="tituloVentana">Ingredientes</h3>
+            <ul class="listaIngredientes" id="listaIngredientes"></ul>
+        </div>
+    </div>
+    
+    <div class="ventanaEmergente" id="ventanaPedido">
+        <div class="contenido">
+            <span class="cerrar" id="cerrarVentanaPedido" onclick="cerrarVentana('ventanaPedido')">&times;</span>
+            <h3 class="tituloVentana">Pedido</h3>
+            <ul class="listaIngredientes" id="listaIngredientesPedido"></ul>
+            <input class="quantity" id="id_form-0-quantity" min="0" name="form-0-quantity" value="1" type="number">
+            <select class="btn btn-primary">
+                <option value="">Método de pago</option>
+                <option value="Tarjeta">Tarjeta</option>
+                <option value="Efectivo">Efectivo</option>
+            </select>
+            <button class="btn btn-primary">Pedir</button>
+        </div>
+    </div>
+
+    <div style="text-align: center;"></div>
         <section class="pagi">
             <ul>
                 <li class="scroll-to-section"><a href="/Variedades" class="activate">1</a></li>
@@ -132,6 +158,8 @@
             </ul>
         </section>
     </div>
+
+    <script src="{{ url_for('static', filename='js/ventana.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

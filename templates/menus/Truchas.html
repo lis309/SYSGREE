@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/ventana.css')}}">
     <link rel="shortcut icon" href="{{url_for('static',filename='img/index/logo2.jpg')}}" type="image/x-icon">
 </head>
 
@@ -19,6 +20,7 @@
     <h1 class="text-center">Truchas</h1>
     <br>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+
         <div class="card">
             <img src="{{url_for('static',filename='img/imagenes/img26.jpg')}}" class="card-img-top" height="230px">
             <div style="text-align: center;">
@@ -26,8 +28,8 @@
                     <h5 class="card-title">Sancocho de Bagre</h5>
                     <p class="card-text">$ 45.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="36">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="36">Pedir</button>
             </div>
         </div>
 
@@ -38,10 +40,11 @@
                     <h5 class="card-title">Trucha a la Plancha</h5>
                     <p class="card-text">$ 42.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="37">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="37">Pedir</button>
             </div>
         </div>
+
         <div class="card">
             <img src="{{url_for('static',filename='img/imagenes/img27.jpg')}}" class="card-img-top" alt="...">
             <div style="text-align: center;">
@@ -49,8 +52,8 @@
                     <h5 class="card-title">Trucha al Ajillo</h5>
                     <p class="card-text">$ 44.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="38">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="38">Pedir</button>
             </div>
         </div>
 
@@ -61,10 +64,11 @@
                     <h5 class="card-title">Trucha Gratinada</h5>
                     <p class="card-text">$ 46.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="39">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="39">Pedir</button>
             </div>
         </div>
+
         <div class="card">
             <img src="{{url_for('static',filename='img/imagenes/img29.jpg')}}" class="card-img-top" height="230px">
             <div style="text-align: center;">
@@ -72,8 +76,8 @@
                     <h5 class="card-title">Trucha Maracuyá</h5>
                     <p class="card-text">$ 44.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="40">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="40">Pedir</button>
             </div>
         </div>
 
@@ -84,8 +88,8 @@
                     <h5 class="card-title">Trucha Marinera</h5>
                     <p class="card-text">$ 49.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="41">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="41">Pedir</button>
             </div>
         </div>
 
@@ -96,11 +100,10 @@
                     <h5 class="card-title">Trucha Marinera Gratinada</h5>
                     <p class="card-text">$ 52.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="42">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="42">Pedir</button>
             </div>
         </div>
-
 
         <div class="card">
             <img src="{{url_for('static',filename='img/imagenes/img32.jpg')}}" class="card-img-top" alt="...">
@@ -109,21 +112,45 @@
                     <h5 class="card-title">Vuido de Capaz</h5>
                     <p class="card-text">$ 45.000</p>
                 </div>
-                <button class="btn btn-primary">Ingredientes</button>
-                <button class="btn btn-primary">Pedir</button>
+                <button class="btn btn-primary mostrar-ventana" data-plato-id="43">Ingredientes</button>
+                <button class="btn btn-primary mostrar-pedido" data-plato-id="43">Pedir</button>
             </div>
         </div>
+
     </div>
+
+    <div class="ventanaEmergente" id="ventanaIngredientes">
+        <div class="contenido">
+            <span class="cerrar" id="cerrarVentanaIngredientes" onclick="cerrarVentana('ventanaIngredientes')">&times;</span>
+            <h3 class="tituloVentana">Ingredientes</h3>
+            <ul class="listaIngredientes" id="listaIngredientes"></ul>
+        </div>
+    </div>
+    
+    <div class="ventanaEmergente" id="ventanaPedido">
+        <div class="contenido">
+            <span class="cerrar" id="cerrarVentanaPedido" onclick="cerrarVentana('ventanaPedido')">&times;</span>
+            <h3 class="tituloVentana">Pedido</h3>
+            <ul class="listaIngredientes" id="listaIngredientesPedido"></ul>
+            <input class="quantity" id="id_form-0-quantity" min="0" name="form-0-quantity" value="1" type="number">
+            <select class="btn btn-primary">
+                <option value="">Método de pago</option>
+                <option value="Tarjeta">Tarjeta</option>
+                <option value="Efectivo">Efectivo</option>
+            </select>
+            <button class="btn btn-primary">Pedir</button>
+        </div>
+    </div>   
+
+    <div style="text-align: center;">
+        <section class="pagi">
+            <ul>
+                <li class="scroll-to-section"><a href="/menu" class="activate">volver</a></li>
+            </ul>
+        </section>
     </div>
 
-    <section class="pagi">
-        <ul>
-            <li class="scroll-to-section"><a href="/menu" class="activate">volver</a></li>
-
-
-
-        </ul>
-    </section>
+    <script src="{{ url_for('static', filename='js/ventana.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
