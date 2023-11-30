@@ -11,7 +11,7 @@ from utils.db import db
 
 app = Flask(__name__)
 
-app.secret_key = 'h@K45pQwT#m7FgZnD$78vL!xJl5C*+yRb'
+app.secret_key = 'h@K45pQwT#m7FgZnD$78vL!xJl5C*+yRbGG576JHGUYIURI'
 
 Login = Blueprint ("login", __name__)
 
