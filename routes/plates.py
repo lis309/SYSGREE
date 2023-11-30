@@ -10,6 +10,7 @@ from utils.db import db
 #Importar el decorador
 from .validateRol import usuarioAdminRequired
 from .logout import cerrarSesion
+from sqlalchemy.exc import IntegrityError
 
 plates = Blueprint("plates", __name__)
 
@@ -27,25 +28,22 @@ def consultarPlato():
 def capturarPlato():
     return render_template("plato/RegistrarPlato.html")
 
-
 @plates.route("/registrarPlate", methods=["POST"])
 @usuarioAdminRequired
 @cerrarSesion
 def registrarPlato():
-    nombre = request.form["nombre"]
-    descripcion = request.form["descripcion"]
-    precio = request.form["precio"]
-
     nombre = request.form.get("nombre")
     descripcion = request.form.get("descripcion")
     precio = request.form.get("precio")
+    
+    estado = "Activo" 
 
-    nuevoPlato = Plato(nombre, descripcion, precio)
+    nuevoPlato = Plato(nombre, descripcion, precio, estado)
 
     db.session.add(nuevoPlato)
     db.session.commit()
     
-    flash("El ingrediente se registró correctamente", "success")
+    flash("El plato se registró correctamente", "success")
 
     return redirect(url_for("plates.consultarPlato"))
 
@@ -71,18 +69,28 @@ def actualizarPlato(codigoPlato):
     return render_template("plato/ActualizarPlato.html", plate=plate)
 
 
-@plates.route("/eliminarPlato/<codigoPlato>")
+@plates.route("/eliminarPlato/<int:codigoPlato>", methods=['POST'])
 @usuarioAdminRequired
 @cerrarSesion
 def eliminarPlato(codigoPlato):
-    plate = Plato.query.get(codigoPlato)
+    try:
+        plate = Plato.query.get(codigoPlato)
 
-    db.session.delete(plate)
-    db.session.commit()
+        if plate:
+            # Actualiza el campo 'estado' en lugar de eliminar físicamente
+            plate.estadoPlato = ("Inactivo")
+            db.session.commit()
+            flash("El plato se eliminó correctamente", "success")
+            return jsonify({'message': 'Plato eliminado con éxito'})
+        else:
+            flash("No se pudo encontrar el plato a eliminar", "error")
+            return jsonify({'message': 'Error al eliminar el plato'})
+    except IntegrityError as e:
+        # Si hay una violación de la clave externa, maneja el error
+        db.session.rollback()
+        flash(f"No se puede eliminar el plato debido a restricciones de integridad referencial: {str(e)}", "error")
+        return jsonify({'message': f'Error al eliminar el plato debido a restricciones de integridad referencial: {str(e)}'})
 
-    flash("El ingrediente se eliminó correctamente", "success")
-
-    return redirect(url_for("plates.consultarPlato"))
 
 @plates.route("/buscarPlato")
 @usuarioAdminRequired

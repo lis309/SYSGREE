@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{url_for('static',filename='img/index/logo2.jpg')}}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilos.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <title>Consultar Ingrediente</title>
 </head>
 <body>
@@ -40,23 +42,65 @@
             </tr>
         </thead>
         {% for ingredient in ingredients %}
-        <tbody>
-            <tr>
-                <td>{{ ingredient.codigoIngrediente }}</td>
-                <td>{{ ingredient.nombreIngrediente }}</td>
-                <td>{{ ingredient.descripcionIngrediente }}</td>
-                <td>{{ ingredient.tipoSaborIngrediente }}</td>
-                <td>{{ ingredient.categoriaIngrediente }}</td>
-                <td>
-                  <a href="{{ url_for('ingredients.actualizarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}" class="boton">Actualizar</a>
-                </td>
-                <td>
-                  <a href="{{ url_for('ingredients.eliminarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}" class="boton boton-rojo">Eliminar</a>
-                </td> 
-            </tr>
-        </tbody>
-        {% endfor %}
+          {% if ingredient.estadoIngrediente == "Activo" %}
+            <tbody>
+                <tr>
+                    <td>{{ ingredient.codigoIngrediente }}</td>
+                    <td>{{ ingredient.nombreIngrediente }}</td>
+                    <td>{{ ingredient.descripcionIngrediente }}</td>
+                    <td>{{ ingredient.tipoSaborIngrediente }}</td>
+                    <td>{{ ingredient.categoriaIngrediente }}</td>
+                    <td>
+                      <a href="{{ url_for('ingredients.actualizarIngrediente', codigoIngrediente=ingredient.codigoIngrediente) }}" class="boton">Actualizar</a>
+                    </td>
+                    <td>
+                      <button class="boton boton-rojo" data-toggle="modal" data-target="#confirmacionModal-{{ ingredient.codigoIngrediente }}">Eliminar</button>
+                    </td> 
+                </tr>
+            </tbody>
+          {% endif %}
+            <!-- Modal de confirmación -->
+            <div class="modal" tabindex="-1" role="dialog" id="confirmacionModal-{{ ingredient.codigoIngrediente }}">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Confirmar Eliminación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>¿Estás seguro de que deseas eliminar el ingrediente "{{ ingredient.nombreIngrediente }}"?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" onclick="eliminarIngrediente('{{ ingredient.codigoIngrediente }}')">Sí, eliminar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
     </table>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    function eliminarIngrediente(codigoIngrediente) {
+        // Hacer una solicitud AJAX para eliminar el plato
+        $.ajax({
+            type: 'POST',
+            url: '/eliminarIngrediente/' + codigoIngrediente,
+            success: function (response) {
+                alert('Ingrediente eliminado con éxito');
+                location.reload();  // Recargar la página después de la eliminación
+            },
+            error: function (xhr, status, error) {
+                console.error('Error al eliminar el plato:', status, error);
+                alert('Error al eliminar el ingrediente. Consulta la consola para más detalles.');
+            }
+        });
+    }
+  </script>
 </body>
 </html>
 

@@ -36,12 +36,14 @@ class Ingrediente(db.Model):
     descripcionIngrediente = db.Column(db.String(120), nullable=True)
     tipoSaborIngrediente = db.Column(db.String(128), nullable=True)
     categoriaIngrediente = db.Column(db.String(120), nullable=True)
+    estadoIngrediente = db.Column(db.String(50))
 
-    def __init__(self, nombreIngrediente, descripcionIngrediente, tipoSaborIngrediente, categoriaIngrediente):
+    def __init__(self, nombreIngrediente, descripcionIngrediente, tipoSaborIngrediente, categoriaIngrediente, estadoIngrediente):
         self.nombreIngrediente = nombreIngrediente
         self.descripcionIngrediente = descripcionIngrediente
         self.tipoSaborIngrediente = tipoSaborIngrediente
         self.categoriaIngrediente = categoriaIngrediente
+        self.estadoIngrediente = estadoIngrediente
 
 
 class Plato(db.Model):
@@ -51,11 +53,13 @@ class Plato(db.Model):
     nombrePlato = db.Column(db.String(120))
     descripcionPlato = db.Column(db.String(120))
     precioPlato = db.Column(db.String(120))
+    estadoPlato = db.Column(db.String(50))
 
-    def __init__(self, nombrePlato, descripcionPlato, precioPlato):
+    def __init__(self, nombrePlato, descripcionPlato, precioPlato, estadoPlato):
         self.nombrePlato = nombrePlato
         self.descripcionPlato = descripcionPlato
         self.precioPlato = precioPlato
+        self.estadoPlato = estadoPlato
 
 
 class IngredientePlato(db.Model):

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{url_for('static',filename='img/index/logo2.jpg')}}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilos.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <title>Consultar Plato</title>
 </head>
 <body>
@@ -24,21 +26,22 @@
     {% endif %}
   {% endwith %}
   
-    <table>
-      <div class="logo-container">
-        <img class="logo" src="{{url_for('static',filename='img/index/logo2.jpg')}} ">
-      </div>
-        <thead>
-            <tr>
-              <th>Código </th>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Precio</th>
-              <th></th>
-              <th></th>
-            </tr>
-        </thead>
-        {% for plate in plates %}
+  <table>
+    <div class="logo-container">
+      <img class="logo" src="{{url_for('static',filename='img/index/logo2.jpg')}} ">
+    </div>
+    <thead>
+        <tr>
+          <th>Código </th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th></th>
+          <th></th>
+        </tr>
+    </thead>
+    {% for plate in plates %}
+      {% if plate.estadoPlato == "Activo" %}
         <tbody>
             <tr>
                 <td>{{ plate.codigoPlato }}</td>
@@ -49,14 +52,52 @@
                   <a href="{{ url_for('plates.actualizarPlato', codigoPlato=plate.codigoPlato) }}" class="boton">Actualizar</a>
                 </td>
                 <td>
-                  <a href="{{ url_for('plates.eliminarPlato', codigoPlato=plate.codigoPlato) }}" class="boton boton-rojo">Eliminar</a>
+                  <button class="boton boton-rojo" data-toggle="modal" data-target="#confirmacionModal-{{ plate.codigoPlato }}">Eliminar</button>
                 </td> 
             </tr>
         </tbody>
-        {% endfor %}
-    </table>
+      {% endif %}
+      <!-- Modal de confirmación -->
+      <div class="modal" tabindex="-1" role="dialog" id="confirmacionModal-{{ plate.codigoPlato }}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirmar Eliminación</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>¿Estás seguro de que deseas eliminar el plato "{{ plate.nombrePlato }}"?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" onclick="eliminarPlato('{{ plate.codigoPlato }}')">Sí, eliminar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </table>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  function eliminarPlato(codigoPlato) {
+      // Hacer una solicitud AJAX para eliminar el plato
+      $.ajax({
+          type: 'POST',
+          url: '/eliminarPlato/' + codigoPlato,
+          success: function (response) {
+              alert('Plato eliminado con éxito');
+              location.reload();  // Recargar la página después de la eliminación
+          },
+          error: function (xhr, status, error) {
+              console.error('Error al eliminar el plato:', status, error);
+              alert('Error al eliminar el plato. Consulta la consola para más detalles.');
+          }
+      });
+  }
+</script>
 </body>
 </html>
-
-
-
