@@ -56,8 +56,40 @@ function mostrarVentana(platoId, ventanaId) {
         });
 }
 
+function realizarPedido() {
+    var platoId = document.getElementById("plato_id_pedido").value;
+    var cantidad = document.getElementById("quantity_pedido").value;
+    var valorPedido = document.getElementById("valor_pedido").value;
+    var metodoPago = document.getElementById("metodo_pago").value;
 
+    // Obtén la lista de ingredientes (como en el ejemplo anterior)
 
+    // Construye el objeto que se enviará al servidor
+    var pedidoData = {
+        id: platoId,
+        ingredientes: listaIngredientes,
+        cantidad: cantidad,
+        metodo_pago: metodoPago,
+        valorPedido: valorPedido
+    };
+
+    // Realiza la solicitud POST al servidor
+    fetch('/insertar_pedido', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(pedidoData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        // Puedes realizar acciones adicionales después de la inserción, si es necesario
+    })
+    .catch(error => {
+        console.error('Error al insertar pedido:', error);
+    });
+}
 
 function cerrarVentana(ventanaId) {
     var ventana = document.getElementById(ventanaId);

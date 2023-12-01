@@ -1,6 +1,13 @@
 CREATE DATABASE sysgree;
 USE sysgree;
 
+SELECT * FROM sysgree.usuarios;
+USE sysgree;
+
 INSERT INTO rolUsuarios (nombreRolUsuario) VALUES
 ("Administrador"),
 ("Cliente");
+
+INSERT INTO ingredientesPlato (codigoIngredienteFK, codigoPlatoFK) VALUES
+(1,1),
+(2,1);
