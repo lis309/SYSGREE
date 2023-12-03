@@ -143,13 +143,15 @@
             <span class="cerrar" id="cerrarVentanaPedido" onclick="cerrarVentana('ventanaPedido')">&times;</span>
             <h3 class="tituloVentana">Pedido</h3>
             <ul class="listaIngredientes" id="listaIngredientesPedido"></ul>
+            <label for="">Cantidad: </label>
             <input class="quantity" id="id_form-0-quantity" min="0" name="form-0-quantity" value="1" type="number">
-            <select class="btn btn-primary">
+            <select id="metodoPago" class="btn btn-primary">
                 <option value="">Método de pago</option>
                 <option value="Tarjeta">Tarjeta</option>
                 <option value="Efectivo">Efectivo</option>
             </select>
-            <button class="btn btn-primary">Pedir</button>
+            <!-- Agrega el ID "btnPedir" al botón Pedir -->
+            <button id="btnPedir" class="btn btn-primary">Pedir</button>
         </div>
     </div>
 

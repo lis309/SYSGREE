@@ -1,0 +1,151 @@
+body {
+    background-image: url("../img/index/fondologin.jpg");
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+/* Estilos para la sección */
+.pagi {
+	margin-bottom: 600px;
+    text-align: right; /* Alinea el contenido al centro */
+    padding: 20px; /* Espaciado interno */
+}
+
+.pedidoListo {
+  margin: 0;
+  margin-right: 50px;
+  margin-top: -50px;
+  text-align: right; /* Alinea el contenido al centro */
+  padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos para el botón */
+.scroll {
+  background-color: #4b5785; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interior */
+  text-decoration: none; /* Quita la subrayado del enlace */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+  }
+  
+  /* Estilos para el botón al pasar el mouse sobre él */
+  .scroll a:hover {
+  background-color: #3e4b7c; /* Cambia el color de fondo al pasar el mouse */
+  }
+
+
+li {
+	list-style: none;
+}
+
+/* Estilos para el botón */
+.scroll-to-section a {
+display: inline-block; /* Hace que el enlace sea un bloque en línea */
+background-color: #4b5785; /* Color de fondo */
+color: white; /* Color del texto */
+padding: 10px 20px; /* Espaciado interior */
+text-decoration: none; /* Quita la subrayado del enlace */
+border-radius: 5px; /* Bordes redondeados */
+transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+/* Estilos para el botón al pasar el mouse sobre él */
+.scroll-to-section a:hover {
+background-color: #3e4b7c; /* Cambia el color de fondo al pasar el mouse */
+}
+
+.container {
+width: 80%;
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.233);
+margin-left: 20px;
+}
+
+table {
+width: 100%;
+text-align: center;
+vertical-align: middle;
+border-collapse: collapse;
+margin-bottom: 20px;
+border: 1px solid #ddd;
+}
+
+th, td {
+padding: 12px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+/* Estilo opcional para resaltar el select al enfocarlo */
+select:focus {
+outline: 2px solid #3498db;
+}
+
+.ingredientes{
+  display: block;
+  border-right: 1px solid #ddd;
+  text-align: center;
+}
+
+.metodoPago{
+  text-align: center;
+}
+
+th, td {
+padding: 12px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+.details {
+display: none;
+border: 1px solid #ddd;
+width: 100%;
+margin-top: 10px;
+}
+
+.toggle-btn {
+cursor: pointer;
+color: #000000;
+font-weight: bold;
+text-decoration: none;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 25px;
+margin-bottom: 5px;
+display: block;
+}
+
+.title {
+text-align: center;
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.comanda-header {
+text-align: center;
+background-color: #535f8f;
+color: white;
+padding: 10px;
+border-radius: 5px;
+margin-bottom: 10px;
+}
+
+.comanda-footer {
+margin-top: 10px;
+font-size: 18px;
+}
+
+.total {
+font-weight: bold;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+  

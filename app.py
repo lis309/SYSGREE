@@ -23,6 +23,9 @@ from routes.logout import logout
 #Importar blueprint de listaIngredientes
 from routes.listaIngredientes import listaIngredientes
 
+#Importar blueprint de listaIngredientes
+from routes.comandas import orders
+
 # Importar la clase SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
@@ -63,4 +66,7 @@ app.register_blueprint(logout)
 
 # Traer la función del blueprint
 app.register_blueprint(listaIngredientes)
+
+# Traer la función del blueprint
+app.register_blueprint(orders)
 

@@ -1,6 +1,10 @@
-from flask import jsonify, Blueprint, request, json
-from models.Modelos import Ingrediente, IngredientePlato, Pedido, Plato  # Agrega esta línea
+from flask import jsonify, Blueprint, request
+from sqlalchemy import and_
+#Importar modelos
+from models.Modelos import Ingrediente, IngredientePlato, Pedido, Plato
+# Conexion a la bd
 from utils.db import db
+#Importar el decorador
 from .validateRol import usuarioClientRequired
 from .logout import cerrarSesion
 
@@ -10,35 +14,62 @@ listaIngredientes = Blueprint("listaIngredientes", __name__)
 @usuarioClientRequired
 @cerrarSesion
 def obtener_ingredientes():
+    # Obtén el ID del plato de la solicitud
     plato_id = request.args.get("id")
 
-    # Modifica la consulta para incluir el nombre del plato
-    resultados = db.session.query(Ingrediente.nombreIngrediente, Plato.nombrePlato).join(
+    # Realiza una consulta para obtener los ingredientes del plato específico con estado "Activo"
+    ingredientes = db.session.query(Ingrediente.nombreIngrediente).join(
         IngredientePlato, IngredientePlato.codigoIngredienteFK == Ingrediente.codigoIngrediente
-    ).join(Plato, Plato.id == IngredientePlato.codigoPlatoFK).filter(IngredientePlato.codigoPlatoFK == plato_id).all()
+    ).filter(
+        and_(
+            IngredientePlato.codigoPlatoFK == plato_id,
+            Ingrediente.estadoIngrediente == "Activo"
+        )
+    ).all()
 
-    # Procesa los resultados y devuelve el nombre del plato junto con los ingredientes
-    data = {
-        "nombre_plato": resultados[0].nombrePlato if resultados else None,
-        "ingredientes": [nombre_ingrediente for nombre_ingrediente, _ in resultados]
-    }
-    
-    return jsonify(data)
+    # Procesa los resultados y devuelve los nombres de los ingredientes en formato JSON
+    ingredientes = [ingrediente for (ingrediente,) in ingredientes]
 
-@listaIngredientes.route('/insertar_pedido', methods=['POST'])
+    return jsonify(ingredientes)
+
+
+@listaIngredientes.route('/realizar_pedido', methods=['POST'])
 @usuarioClientRequired
 @cerrarSesion
-def insertar_pedido():
-    plato_id = request.json.get("id")
-    nombre_plato = request.json.get("nombre_plato")
-    ingredientes = request.json.get("ingredientes")
-    cantidad = request.json.get("cantidad")
-    metodo_pago = request.json.get("metodo_pago")
+def realizar_pedido():
+    try:
+        data = request.json
+        plato_id = data.get("plato_id")
+        ingredientes = data.get("ingredientes")
+        cantidad = data.get("cantidad")
+        metodo_pago = data.get("metodo_pago")
 
-    ingredientes_json = json.dumps(ingredientes)
+        nombrePlato = db.session.query(Plato.nombrePlato).filter(Plato.codigoPlato == plato_id).first()
 
-    pedido = Pedido(plato_id=plato_id, ingredientes=ingredientes_json, cantidad=cantidad, metodo_pago=metodo_pago, nombre_plato=nombre_plato)
-    db.session.add(pedido)
-    db.session.commit()
+        nombre = str(nombrePlato[0])
 
-    return jsonify({"message": "Pedido insertado correctamente"})
+        precioPlato = db.session.query(Plato.precioPlato).filter(Plato.codigoPlato == plato_id).first()
+
+        valor = (int(precioPlato[0]) * cantidad)
+
+        ingredientes_pedido = {
+            f'ingrediente_{i+1}': ingrediente if ingrediente else None for i, ingrediente in enumerate(ingredientes)
+        }
+
+        nuevo_pedido = Pedido(
+            nombrePlatoPedido = nombre,
+            **ingredientes_pedido,
+            metodoPago = str(metodo_pago),
+            valorPedido = valor,
+            cantidadPedido = cantidad,
+            estadoPedido = "Espera"
+        )
+
+        db.session.add(nuevo_pedido)
+        db.session.commit()
+
+        return jsonify({"mensaje": "Pedido realizado con éxito"})
+    except Exception as e:
+        print(e)
+        return jsonify({"error": str(e)}), 500
+
